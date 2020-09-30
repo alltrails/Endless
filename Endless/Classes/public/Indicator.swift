@@ -81,7 +81,6 @@ extension Indicator: UIScrollViewDelegate {
         updateCells()
     }
 }
-
 extension Indicator: UICollectionViewDelegateFlowLayout {
     public func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: configuration?.dotSize ?? 0, height: collectionView.frame.height)
@@ -114,8 +113,18 @@ extension Indicator {
             return
         }
         
+        guard selectedIndex < self.collectionView.numberOfItems(inSection: 0) {
+            return
+        }
+        
         let selectedIndexPath = IndexPath(row: selectedIndex, section: 0)
-        self.collectionView.selectItem(at: selectedIndexPath, animated: true, scrollPosition: .centeredHorizontally)
+        UIView.animate(withDuration: 0.33) {
+            
+            self.collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        } completion: { (_) in
+            self.updateCells()
+        }
+        
     }
     
     private func updateCells() {
