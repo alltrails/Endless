@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'Endless'
-  s.version          = '0.0.4'
+  s.version          = '0.0.5'
   s.summary          = 'Endless is a lighweight endless page indicator.'
 
   s.description      = <<-DESC

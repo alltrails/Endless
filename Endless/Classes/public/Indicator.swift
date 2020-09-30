@@ -113,7 +113,7 @@ extension Indicator {
             return
         }
         
-        guard selectedIndex < self.collectionView.numberOfItems(inSection: 0) {
+        guard selectedIndex < self.collectionView.numberOfItems(inSection: 0) else {
             return
         }
         
