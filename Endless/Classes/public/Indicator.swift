@@ -58,7 +58,9 @@ extension Indicator {
     
     private func setupInitialSelection() {
         let selectedIndexPath = IndexPath(row: 0, section: 0)
-        collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        if collectionView.numberOfItems(inSection: 0) > 0 {
+          collectionView.selectItem(at: selectedIndexPath, animated: false, scrollPosition: .centeredHorizontally)
+        }
     }
 }
 
